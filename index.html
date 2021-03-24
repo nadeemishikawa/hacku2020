@@ -60,8 +60,28 @@
                 <div class="col-md-3" style="background:white">
                 </div>
 
-                <!--timer-->
+                <!--center space-->
                 <div class="col-md-6" style="height: 960px">
+
+                    <!--dummy sapce-->
+                    <div class="space">
+                    </div>
+
+                    <!--form-->
+                    <div class="col-md">
+                        <div class="card" style="padding-left: 20px; padding-right: 20px; padding-top: 10px">
+                            <div class="form-group">
+                                <label for="formSubjectName">Subject</label>
+                                <input class="form-control" type="text" id="formSubjectName" style="padding: 15px">
+                                <textarea  class="form-control" rows="3" placeholder="comment"></textarea>
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-primary mb-2" style="">Confirm</button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--timer-->
                     <div id="stopwatch">
                         00:00:00
                     </div>
@@ -78,20 +98,45 @@
                 
                 <!--right space of online status-->
                 <div class="col-md-3" style="background:white">
-                    <div class="card w-auto">
-                        <div class="card-body">
-                            <h5 class="card-title">User name</h5>
-                            <p class="card-text">Study subject and study time etc.</p>
-                            <a href="#" class="btn btn-primary">Like</a>
-                        </div>
+
+                    <!--dummy space-->
+                    <div class="space">
                     </div>
+
+                    <!--online status item-->
+                    <div class="qa-message-list" id="wallmessages">
+                        <div class="message-item" id="m16">
+                            <div class="message-inner">
+                                <div class="message-head clearfix">
+                                    <div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+                                    <div class="user-detail">
+                                        <h5 class="handle">user-name</h5>
+                                        <div class="post-meta">
+                                            <div class="asker-meta">
+                                                <span class="qa-message-what"></span>
+                                                <span class="qa-message-when">
+                                                    <span class="qa-message-when-data">5 minutes ago</span>
+                                                </span>
+                                                <span class="qa-message-who">
+                                                    <span class="qa-message-who-pad">by </span>
+                                                    <span class="qa-message-who-data"><a href="">user-account</a></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+							<div class="qa-message-content">
+								<p>subject</p>
+                                <p>comments here</p>
+							</div>
+					</div>
                 </div>
             </div>
         </div>
 
         <style>
             header {
-            height: 100px;
+                height: 100px;
             }
 
             #stopwatch {
@@ -107,6 +152,120 @@
                 top: 55%;
                 left: 48.4%;
                 transform: translate(-51.6%, -45%);
+            }
+
+            /* online_status */
+            .space {
+                height: 100px;
+            }
+            .message-item {
+                margin-bottom: 25px;
+                margin-left: 40px;
+                position: relative;
+            }
+            .message-item .message-inner {
+                background: #fff;
+                border: 1px solid #ddd;
+                border-radius: 3px;
+                padding: 10px;
+                position: relative;
+            }
+            .message-item .message-inner:before {
+                border-right: 10px solid #ddd;
+                border-style: solid;
+                border-width: 10px;
+                color: rgba(0,0,0,0);
+                content: "";
+                display: block;
+                height: 0;
+                position: absolute;
+                left: -20px;
+                top: 6px;
+                width: 0;
+            }
+            .message-item .message-inner:after {
+                border-right: 10px solid #fff;
+                border-style: solid;
+                border-width: 10px;
+                color: rgba(0,0,0,0);
+                content: "";
+                display: block;
+                height: 0;
+                position: absolute;
+                left: -18px;
+                top: 6px;
+                width: 0;
+            }
+            .message-item:before {
+                background: #fff;
+                border-radius: 2px;
+                bottom: -30px;
+                box-shadow: 0 0 3px rgba(0,0,0,0.2);
+                content: "";
+                height: 100%;
+                left: -30px;
+                position: absolute;
+                width: 3px;
+            }
+            .message-item:after {
+                background: #fff;
+                border: 2px solid #ccc;
+                border-radius: 50%;
+                box-shadow: 0 0 5px rgba(0,0,0,0.1);
+                content: "";
+                height: 15px;
+                left: -36px;
+                position: absolute;
+                top: 10px;
+                width: 15px;
+            }
+            .clearfix:before, .clearfix:after {
+                content: " ";
+                display: table;
+            }
+            .message-item .message-head {
+                border-bottom: 1px solid #eee;
+                margin-bottom: 8px;
+                padding-bottom: 8px;
+            }
+            .message-item .message-head .avatar {
+                margin-right: 20px;
+            }
+            .message-item .message-head .user-detail {
+                overflow: hidden;
+            }
+            .message-item .message-head .user-detail h5 {
+                font-size: 16px;
+                font-weight: bold;
+                margin: 0;
+            }
+            .message-item .message-head .post-meta {
+                float: left;
+                padding: 0 15px 0 0;
+            }
+            .message-item .message-head .post-meta >div {
+                color: #333;
+                font-weight: bold;
+                text-align: right;
+            }
+            .post-meta > div {
+                color: #777;
+                font-size: 12px;
+                line-height: 22px;
+            }
+            .message-item .message-head .post-meta >div {
+                color: #333;
+                font-weight: bold;
+                text-align: right;
+            }
+            .post-meta > div {
+                color: #777;
+                font-size: 12px;
+                line-height: 22px;
+            }
+            img {
+                min-height: 40px;
+                max-height: 40px;
             }
         </style>
 
