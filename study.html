@@ -56,7 +56,7 @@
         <!--contents-->
         <div class="container" style="background: #7cc3ec; height: 960px">
             <div class="row">
-                
+
                 <!--left space-->
                 <div class="col-md-3" style="background:white">
                 </div>
@@ -72,9 +72,11 @@
                     <div class="col-md">
                         <div class="card" style="padding-left: 20px; padding-right: 20px; padding-top: 10px">
                             <div class="form-group">
-                                <label for="formSubjectName">Subject</label>
-                                <input class="form-control" type="text" id="formSubjectName" style="padding: 15px">
-                                <textarea  class="form-control" rows="3" placeholder="comment"></textarea>
+                                <label for="formUserName">Share your study hours</label>
+                                <input class="form-control" type="email" id="formUserName" area-describedby="UserNameHelp" placeholder="Enter your name">
+                                <small id="UserNameHelp" class="form-text text-muted" style="padding-bottom: 10px">入力したユーザー名は共有されます.</small>
+                                <input class="form-control" type="text" id="formSubjectName" placeholder="Enter subject name" style="padding: 15px">
+                                <textarea  class="form-control" rows="2" placeholder="Comment"></textarea>
                                     <div class="text-right">
                                         <button type="submit" class="btn btn-primary mb-2">Confirm</button>
                                     </div>
@@ -109,7 +111,7 @@
                         <div class="message-item" id="m16">
                             <div class="message-inner">
                                 <div class="message-head clearfix">
-                                    <div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+                                    <div class="avatar pull-left"><a href="#"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
                                     <div class="user-detail">
                                         <h5 class="handle">user-name</h5>
                                         <div class="post-meta">
@@ -144,13 +146,13 @@
                 font-size: 100px;
                 color: white;
                 position: absolute;
-                top: 45%;
+                top: 50%;
                 left: 50%;
                 transform: translate(-50%, -55%);
             }
             #buttons {
                 position: absolute;
-                top: 55%;
+                top: 60%;
                 left: 48.4%;
                 transform: translate(-51.6%, -45%);
             }
