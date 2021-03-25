@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- Required meta tags-->
+        <meta charaset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="Keywords" content="norobot">
+
+        <title>Studeem</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        
+        
+        <!-- Optional JS -->
+        <!-- Firebase first, then jQuery, then Bootstrap JS-->
+        <script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+        <script defer src="/__/firebase/init.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <!--header and navigation bar-->>
+        <header class="fixed-top">
+            <nav class="navbar navbar-light bg-light">
+              <a class="navbar-brand" href="#">
+                <img src="logo.png" width="40" height="40" class="d-inline-block align-top" alt="">
+                Studeem
+              </a>
+            </nav>
+
+            <ul class="nav nav-pills justify-content-center bg-light">
+                <li class="nav-item">
+                    <a class="nav-link" href="./home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./study.html">Study</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" area-current="page" href="#">Ranking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Timeline</a>
+                </li>
+            </ul>
+        </header>
+
+        <!--contents-->
+        <div class="container" style="background: #7cc3ec; height: 960px">
+            <div class="row">
+
+                <!--left space-->
+                <div class="col-md-3" style="background:white">
+                </div>
+
+                <!--center space-->
+                <div class="col-md-6" style="height: 960px">
+
+                    <!--dummy sapce-->
+                    <div class="space">
+                    </div>
+                </div>
+
+                <!--right space-->
+                <div class="col-md-3" style="background: white">
+
+                    <!--dummy space-->
+                    <div class="space">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+    
+
+        <!--foter-->
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">2021 とある理系大学生</p>
+            </div>
+        </footer>
+
+        <style>                
+            header {
+                height: 100px;
+            }
+
+            .space {
+                height: 100px;
+            }
+        </style>
+    </body>
+</html>        
