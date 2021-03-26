@@ -32,7 +32,7 @@
         <header class="fixed-top">
             <nav class="navbar navbar-light bg-light">
               <a class="navbar-brand" href="#">
-                <img src="logo.png" width="40" height="30" class="d-inline-block align-top" alt="">
+                <img src="logo.png" width="40" height="40" class="d-inline-block align-top" alt="">
                 Studeem
               </a>
             </nav>
@@ -56,7 +56,7 @@
         <!--contents-->
         <div class="container" style="background: #7cc3ec; height: 960px">
             <div class="row">
-
+                
                 <!--left space-->
                 <div class="col-md-3" style="background:white">
                 </div>
@@ -70,15 +70,15 @@
 
                     <!--form-->
                     <div class="col-md">
-                        <div class="card" style="padding-left: 20px; padding-right: 20px; padding-top: 10px">
+                        <div class="card" style="padding-left: 19px; padding-right: 20px; padding-top: 10px">
                             <div class="form-group">
                                 <label for="formUserName">Share your study hours</label>
                                 <input class="form-control" type="email" id="formUserName" area-describedby="UserNameHelp" placeholder="Enter your name">
-                                <small id="UserNameHelp" class="form-text text-muted" style="padding-bottom: 10px">入力したユーザー名は共有されます.</small>
-                                <input class="form-control" type="text" id="formSubjectName" placeholder="Enter subject name" style="padding: 15px">
-                                <textarea  class="form-control" rows="2" placeholder="Comment"></textarea>
+                                <small id="UserNameHelp" class="form-text text-muted" style="padding-bottom: 9px">入力したユーザー名は共有されます.</small>
+                                <input class="form-control" type="text" id="formSubjectName" placeholder="Enter subject name" style="padding: 14px">
+                                <textarea  class="form-control" rows="1" placeholder="Comment" id="comment"></textarea>
                                     <div class="text-right">
-                                        <button type="submit" class="btn btn-primary mb-2">Confirm</button>
+                                        <button type="submit" class="btn btn-primary mb-3">Confirm</button>
                                     </div>
                             </div>
                         </div>
@@ -90,8 +90,8 @@
                     </div>
 
                     <ul id="buttons">
-                        <button type="button" class="btn btn-primary" onclick="startTimer()">Start</button>
-                        <button type="button" class="btn btn-primary" onclick="stopTimer()">Stop</button>
+                        <button type="button" class="btn btn-primary" onclick="startTimer();GetStartTime()">Start</button>
+                        <button type="button" class="btn btn-primary" onclick="stopTimer();GetElapsedTime()">Stop</button>
 
                         <button type="button" class="btn btn-danger" onclick="resetTimer()">Reset</button>
                     </ul>
@@ -117,13 +117,7 @@
                                         <div class="post-meta">
                                             <div class="asker-meta">
                                                 <span class="qa-message-what"></span>
-                                                <span class="qa-message-when">
-                                                    <span class="qa-message-when-data">5 minutes ago</span>
-                                                </span>
-                                                <span class="qa-message-who">
-                                                    <span class="qa-message-who-pad">by </span>
-                                                    <span class="qa-message-who-data"><a href="">user-account</a></span>
-                                                </span>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -146,13 +140,13 @@
                 font-size: 100px;
                 color: white;
                 position: absolute;
-                top: 50%;
+                top: 45%;
                 left: 50%;
                 transform: translate(-50%, -55%);
             }
             #buttons {
                 position: absolute;
-                top: 60%;
+                top: 55%;
                 left: 48.4%;
                 transform: translate(-51.6%, -45%);
             }
@@ -284,84 +278,81 @@
 
 
         <script>
-            // インプットの値
-            const subjectName = document.getElementById("formSubjectName")
-            const comment = document.getElementById("comment")
+        // インプットの値
+        const subjectName = document.getElementById("formSubjectName")
+        const comment = document.getElementById("comment")
+        
+
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyBAPJiIAaWovNwj74ne_D6fQqjMukKIm4A",
+            authDomain: "hacku2020-a1894.firebaseapp.com",
+            projectId: "hacku2020-a1894",
+            storageBucket: "hacku2020-a1894.appspot.com",
+            messagingSenderId: "421842644016",
+            appId: "1:421842644016:web:c1ac37d721f1dc458c91f5",
+            measurementId: "G-V1B1G3G6PG"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig); // Firebase の初期化
+        var db = firebase.firestore(); // データベースに関する機能の取得
+        
+        function GetStartTime(){
+            startTime = new Date();
+            console.log(comment.value)
+            console.log(subjectName.value)
+            //ここからデータベースに追加する処理
+            db.collection("users").add({
+                comment : comment.value,
+                sebjectName : subjectName.value,
+                create_at: new Date()
+
+    
+            })
+
+            .then(function() {
+                console.log("Document successfully written!");
+            })
+
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+
+            
+            
             
 
+        }
 
-            // Your web app's Firebase configuration
-            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-            var firebaseConfig = {
-                apiKey: "AIzaSyBAPJiIAaWovNwj74ne_D6fQqjMukKIm4A",
-                authDomain: "hacku2020-a1894.firebaseapp.com",
-                projectId: "hacku2020-a1894",
-                storageBucket: "hacku2020-a1894.appspot.com",
-                messagingSenderId: "421842644016",
-                appId: "1:421842644016:web:c1ac37d721f1dc458c91f5",
-                measurementId: "G-V1B1G3G6PG"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig); // Firebase の初期化
-            var db = firebase.firestore(); // データベースに関する機能の取得
-            
-            function GetStartTime(){
-                startTime = new Date();
-                console.log(comment.value)
-                console.log(subjectName.value)
-                //ここからデータベースに追加する処理
-                db.collection("users").add({
-                    comment : comment.value,
-                    sebjectName : subjectName.value
-        
-                })
 
-                .then(function() {
-                    console.log("Document successfully written!");
-                })
+        function GetElapsedTime(){
+            if(startTime == null) {
+                console.log("開始 -> 終了の順に押してください");
+            }else{
+            var stopTime = new Date()
+            var elapsedTime = stopTime - startTime
+            console.log("経過時間(ミリ秒):", elapsedTime);
 
-                .catch(function(error) {
-                    console.error("Error writing document: ", error);
-                });
+            //ここからデータベースに追加する処理
+            db.collection("users").doc("YeVLTLpnZFqhvnH9rSr4").set({
+                time : elapsedTime
+    
+            })
 
-                
-                
-                
+            .then(function() {
+                console.log("Document successfully written!");
+            })
+
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
 
             }
-
-
-            function GetElapsedTime(){
-                if(startTime == null) {
-                    console.log("開始 -> 終了の順に押してください");
-                }else{
-                var stopTime = new Date()
-                var elapsedTime = stopTime - startTime
-                console.log("経過時間(ミリ秒):", elapsedTime);
-
-                //ここからデータベースに追加する処理
-                db.collection("users").doc("YeVLTLpnZFqhvnH9rSr4").set({
-                    time : elapsedTime
-        
-                })
-
-                .then(function() {
-                    console.log("Document successfully written!");
-                })
-
-                .catch(function(error) {
-                    console.error("Error writing document: ", error);
-                });
-
-                }
-            }
+        }
 
         
         </script>
-
-
-
-
-
    </body>
 </html>
