@@ -70,12 +70,12 @@
 
                     <!--form-->
                     <div class="col-md">
-                        <div class="card" style="padding-left: 19px; padding-right: 20px; padding-top: 10px">
+                        <div class="card" style="padding-left: 20px; padding-right: 20px; padding-top: 10px">
                             <div class="form-group">
                                 <label for="formUserName">Share your study hours</label>
                                 <input class="form-control" type="email" id="formUserName" area-describedby="UserNameHelp" placeholder="Enter your name">
-                                <small id="UserNameHelp" class="form-text text-muted" style="padding-bottom: 9px">入力したユーザー名は共有されます.</small>
-                                <input class="form-control" type="text" id="formSubjectName" placeholder="Enter subject name" style="padding: 14px">
+                                <small id="UserNameHelp" class="form-text text-muted" style="padding-bottom: 10px">入力したユーザー名は共有されます.</small>
+                                <input class="form-control" type="text" id="formSubjectName" placeholder="Enter subject name" style="padding: 15px">
                                 <textarea  class="form-control" rows="1" placeholder="Comment" id="comment"></textarea>
                                     <div class="text-right">
                                         <button type="submit" class="btn btn-primary mb-3">Confirm</button>
@@ -281,6 +281,8 @@
         // インプットの値
         const subjectName = document.getElementById("formSubjectName")
         const comment = document.getElementById("comment")
+        const userName = document.getElementById("formUserName")
+
         
 
 
@@ -303,10 +305,12 @@
             startTime = new Date();
             console.log(comment.value)
             console.log(subjectName.value)
+
             //ここからデータベースに追加する処理
             db.collection("users").add({
-                comment : comment.value,
+                userName : userName.value,
                 sebjectName : subjectName.value,
+                comment : comment.value,
                 create_at: new Date()
 
     
