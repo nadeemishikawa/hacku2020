@@ -115,7 +115,16 @@
                                     <div class="user-detail">
                                         <h5 class="handle">user-name</h5>
                                         <div class="post-meta">
-                                            <!--this line is unnecessary-->
+                                            <div class="asker-meta">
+                                                <span class="qa-message-what"></span>
+                                                <span class="qa-message-when">
+                                                    <span class="qa-message-when-data">5 minutes ago</span>
+                                                </span>
+                                                <span class="qa-message-who">
+                                                    <span class="qa-message-who-pad">by </span>
+                                                    <span class="qa-message-who-data"><a href="">user-account</a></span>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -271,5 +280,88 @@
                 <p class="text-muted">2021 とある理系大学生</p>
             </div>
         </footer>
+
+
+
+        <script>
+            // インプットの値
+            const subjectName = document.getElementById("formSubjectName")
+            const comment = document.getElementById("comment")
+            
+
+
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            var firebaseConfig = {
+                apiKey: "AIzaSyBAPJiIAaWovNwj74ne_D6fQqjMukKIm4A",
+                authDomain: "hacku2020-a1894.firebaseapp.com",
+                projectId: "hacku2020-a1894",
+                storageBucket: "hacku2020-a1894.appspot.com",
+                messagingSenderId: "421842644016",
+                appId: "1:421842644016:web:c1ac37d721f1dc458c91f5",
+                measurementId: "G-V1B1G3G6PG"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig); // Firebase の初期化
+            var db = firebase.firestore(); // データベースに関する機能の取得
+            
+            function GetStartTime(){
+                startTime = new Date();
+                console.log(comment.value)
+                console.log(subjectName.value)
+                //ここからデータベースに追加する処理
+                db.collection("users").add({
+                    comment : comment.value,
+                    sebjectName : subjectName.value
+        
+                })
+
+                .then(function() {
+                    console.log("Document successfully written!");
+                })
+
+                .catch(function(error) {
+                    console.error("Error writing document: ", error);
+                });
+
+                
+                
+                
+
+            }
+
+
+            function GetElapsedTime(){
+                if(startTime == null) {
+                    console.log("開始 -> 終了の順に押してください");
+                }else{
+                var stopTime = new Date()
+                var elapsedTime = stopTime - startTime
+                console.log("経過時間(ミリ秒):", elapsedTime);
+
+                //ここからデータベースに追加する処理
+                db.collection("users").doc("YeVLTLpnZFqhvnH9rSr4").set({
+                    time : elapsedTime
+        
+                })
+
+                .then(function() {
+                    console.log("Document successfully written!");
+                })
+
+                .catch(function(error) {
+                    console.error("Error writing document: ", error);
+                });
+
+                }
+            }
+
+        
+        </script>
+
+
+
+
+
    </body>
 </html>
