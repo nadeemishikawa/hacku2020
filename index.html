@@ -281,6 +281,8 @@
         // インプットの値
         const subjectName = document.getElementById("formSubjectName")
         const comment = document.getElementById("comment")
+        const userName = document.getElementById("formUserName")
+
         
 
 
@@ -303,10 +305,12 @@
             startTime = new Date();
             console.log(comment.value)
             console.log(subjectName.value)
+
             //ここからデータベースに追加する処理
             db.collection("users").add({
-                comment : comment.value,
+                userName : userName.value,
                 sebjectName : subjectName.value,
+                comment : comment.value,
                 create_at: new Date()
 
     
